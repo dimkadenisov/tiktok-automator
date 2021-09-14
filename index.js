@@ -25,11 +25,3 @@ import { checkAccount } from './functions/checkAccount';
   }
   browser.close();
 })();
-
-// vladislav
-// nibe
-// yaroslav_butyakov@mail.ru NXzwbMPm
-// svschgv6@mail.ru Gw5q2nnZ587
-// vorgachev.ernest@mail.ru NXzwbMPm
-// german_glukhman@mail.ru NXzwbMPm
-// 1alexandr.dedikov@bk.ru Gw5q2nnZ
