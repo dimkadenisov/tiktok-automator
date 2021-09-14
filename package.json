@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "node --es-module-specifier-resolution=node ."
+  },
+  "dependencies": {
+    "puppeteer": "^10.2.0"
+  }
+}
