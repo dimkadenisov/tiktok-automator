@@ -8,7 +8,7 @@ import { checkAccount } from './functions/checkAccount';
   // Стирает старые логи и пишет дату в начало файла
   await cleanLogFile();
   const date = new Date().toLocaleString('ru');
-  await writeLogToFile(date);
+  await writeLogToFile(`${date}\n`);
   // запускает браузер
   const browser = await puppeteer.launch({
     headless: false,
@@ -20,8 +20,13 @@ import { checkAccount } from './functions/checkAccount';
   });
   // получает массив логинов и паролей
   const credentials = await parseCredentialsFromFile('./data.txt');
+  let counter = 1;
   for await (const [log, pass] of credentials) {
+    writeLogToFile(
+      `${counter}/${credentials.length}. Начало проверки аккаунта: ${log} ${pass}\n-------------------------------------`
+    );
     await checkAccount(log, pass, browser);
+    counter += 1;
   }
   browser.close();
 })();

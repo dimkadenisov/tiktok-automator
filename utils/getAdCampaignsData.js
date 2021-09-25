@@ -1,9 +1,10 @@
 async function getAdCampaignsData(page) {
   const addLinks = [];
   // Получает кнопки, открывающие попап с данными
-  const viewDataButtons = await page.$$(
-    '.vi-table__fixed-body-wrapper .operation-item:first-child'
-  );
+  const viewDataButtons =
+    (await page.$$(
+      '.vi-table__fixed-body-wrapper .operation-item:first-child'
+    )) || [];
 
   for await (const button of viewDataButtons) {
     await button.hover();

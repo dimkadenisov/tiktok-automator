@@ -27,9 +27,13 @@ async function checkAdCampaign(link, browser) {
   await page.waitForTimeout(8000);
   // Получает данные о рекламных кампаниях
   const adCampaignsData = await getAdCampaignsData(page);
+  writeLogToFile(
+    `\t\tВсего рекламных ссылок для проверки: ${adCampaignsData.length}\n`
+  );
   // Получает массив допустимых ссылок
   const baseUrls = await parseBaseUrlsFromFile('baseUrls.txt');
   // Проверяет правильные ли ссылки вставлены в рекламных кампаниях
+  let counter = 1;
   for await (const { adId, href } of adCampaignsData) {
     const page = await browser.newPage();
     await Promise.all([
@@ -39,12 +43,21 @@ async function checkAdCampaign(link, browser) {
     const url = await page.url();
 
     if (checkUrl(url, baseUrls)) {
-      await writeLogToFile(`Ok: adId: ${adId}, href: ${href}\n`);
+      await writeLogToFile(
+        `\t\t\t${counter}/${adCampaignsData.length}. Ok: adId: ${adId}, href: ${href}\n`
+      );
+      counter += 1;
       await page.close();
       continue;
     }
 
-    await writeLogToFile(`Ошибка: adId: ${adId}, href: ${href}\n`);
+    await writeLogToFile(`
+      \t\t\t${counter}/${adCampaignsData.length}. Ошибка:\n
+      adId: ${adId},\n
+      Изначальная ссылка: ${href}\n
+      Конечная ссылка: ${url}
+    `);
+    counter += 1;
     await page.close();
   }
   // Закрывает страницу

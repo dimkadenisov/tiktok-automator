@@ -4,11 +4,14 @@ async function getAccauntsWithCostsLinks(page) {
   const accauntsLinks = await page.evaluate(() => {
     // Выбирает строки в таблице с аккаунтами
     const tableRows = document.querySelector('.vi-table__body tbody').children;
+    // Если нет строк в таблице возвращает пустой массив
+    if (tableRows.length === 0) return [];
     // Возвращает строки, в которых были расходы
     const filteredRows = [...tableRows].filter((row) => {
-      const cost = row
-        .querySelector('.vi-table_1_column_4')
-        .innerText.replace(/\D/g, '');
+      const cost =
+        row
+          .querySelector('.vi-table_1_column_4')
+          .innerText.replace(/\D/g, '') ?? 0;
 
       return cost > 0;
     });
@@ -22,7 +25,7 @@ async function getAccauntsWithCostsLinks(page) {
     return links;
   });
 
-  return accauntsLinks;
+  return accauntsLinks || [];
 }
 
 export { getAccauntsWithCostsLinks };

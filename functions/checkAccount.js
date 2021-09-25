@@ -40,7 +40,7 @@ async function checkAccount(log, pass, browser) {
   // Чистит куки
   await clearCoockies(page);
   // // Закрывает страницу
-  // await page.close();
+  await page.close();
 }
 
 export { checkAccount };
