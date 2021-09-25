@@ -44,7 +44,7 @@ async function checkAdCampaign(link, browser) {
 
     if (checkUrl(url, baseUrls)) {
       await writeLogToFile(
-        `\t\t\t${counter}/${adCampaignsData.length}. Ok: adId: ${adId}, href: ${href}\n`
+        `\t\t\t${counter}/${adCampaignsData.length}. Ok: adId: ${adId}, href: ${href}`
       );
       counter += 1;
       await page.close();
