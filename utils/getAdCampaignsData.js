@@ -26,7 +26,7 @@ async function getAdCampaignsData(page) {
 
     addLinks.push({ adId, href });
 
-    await page.click('.side-slip-close');
+    // await page.click('.side-slip-close');
   }
 
   return addLinks;

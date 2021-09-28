@@ -30,3 +30,8 @@ import { checkAccount } from './functions/checkAccount';
   }
   browser.close();
 })();
+// 1alexandr.dedikov@bk.ru Gw5q2nnZ
+// svschgv6@mail.ru Gw5q2nnZ587
+// vorgachev.ernest@mail.ru NXzwbMPm
+// german_glukhman@mail.ru NXzwbMPm
+// yaroslav_butyakov@mail.ru NXzwbMPm
