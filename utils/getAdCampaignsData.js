@@ -26,6 +26,7 @@ async function getAdCampaignsData(page) {
 
     addLinks.push({ adId, href });
 
+    // Нажатие кнопки, которая закрывает модальное окно с данными о рекламной кампании
     // await page.click('.side-slip-close');
   }
 
