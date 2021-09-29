@@ -11,13 +11,15 @@ async function choiceTodayDate(page) {
     .getProperty('innerText')
     .then((value) => value.jsonValue());
   const realTodayDate = new Date().getDate();
-  const prevDayButton = await todayButton.getProperty('previousElementSibling');
 
   await page.waitForTimeout(500);
   if (todayDate == realTodayDate) {
     await todayButton.click();
     await todayButton.click();
   } else {
+    const prevDayButton = await todayButton.getProperty(
+      'previousElementSibling'
+    );
     await prevDayButton.click();
     await page.waitForTimeout(500);
     await prevDayButton.click();
