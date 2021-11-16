@@ -20,9 +20,12 @@ async function checkAccount(log, pass, browser) {
   ]);
   // Выбор аккаунт
   await page.waitForSelector('.vi-collapse-item__header', { timeout: 0 });
+  // Нажимает на кнопку Business Center
   await page.click('.vi-collapse-item__header');
   await Promise.all([
-    page.click('.vi-collapse-item__wrap'),
+    // Нажимает на кнопку tiktok_vs
+    // ОСТОРОЖНО! СЕЛЕКТОР ДОВОЛЬНО СЛАБЫЙ
+    page.click('.item-wrap:last-child'),
     page.waitForNavigation({ waitUntil: 'networkidle0', timeout: 0 }),
   ]);
   // Переход на вкладку обзор
