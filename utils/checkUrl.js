@@ -6,8 +6,6 @@
  * @returns {boolean} прошла ли ссылка проверку
  */
 function checkUrl(url, baseUrls) {
-  for (const baseUrl of baseUrls) {
-    return url.includes(baseUrl);
-  }
+  return baseUrls.some((baseUrl) => url.includes(baseUrl));
 }
 export { checkUrl };
